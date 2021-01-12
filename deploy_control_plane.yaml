@@ -7,6 +7,10 @@
     setup_yaml:
       - url: https://raw.githubusercontent.com/metal-stack/releases/{{ metal_stack_release_version }}/release.yaml
         meta_var: metal_stack_release
+        replace:
+        - key: name
+          old: ghcr.io/metal-stack/
+          new: r.metal-stack.io/
   roles:
     - name: ansible-common
       tags: always
