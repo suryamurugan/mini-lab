@@ -40,8 +40,8 @@ metal_api_sizes:
     min: "{{ '1GB' | humanfriendly }}"
     max: "{{ '10GB' | humanfriendly }}"
 
-metal_hammer_image_url: http://localhost:8000/metal-hammer-initrd.img.lz4
-metal_kernel_url: http://localhost:8000/metal-hammer-kernel-5.4.17
+metal_hammer_image_url: http://192.168.121.1:8000/metal-hammer-initrd.img.lz4
+metal_kernel_url: http://192.168.121.1:8000/metal-hammer-kernel-5.4.17
 
 metal_api_partitions:
   - id: vagrant
