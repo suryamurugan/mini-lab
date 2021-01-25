@@ -15,7 +15,7 @@ metal_api_images:
 - id: firewall-ubuntu-2.0.20201126
   name: Firewall 2 Ubuntu 20201126
   description: Firewall 2 Ubuntu 20201126
-  url: https://images.metal-stack.io/metal-os/master/firewall/2.0-ubuntu/20201126/img.tar.lz4
+  url: https://images.metal-pod.io/metal-os/pull_requests/70-ipv6/firewall/2.0-ubuntu/20210124/img.tar.lz4
   features:
     - firewall
 - id: ubuntu-20.04.20201126
@@ -73,6 +73,19 @@ metal_api_networks:
   vrf: 104009
   prefixes:
   - 100.255.254.0/24
+- id: ipv6-internet
+  description: IPv6
+  name: IPv6 Internet Network
+  nat: true
+  parentnetworkid: ""
+  partitionid: vagrant
+  destinationprefixes:
+      - ::/0
+  prefixes:
+      - fdaa::/104
+  privatesuper: false
+  projectid: ""
+  vrf: 104008
 - id: underlay-vagrant-lab
   name: "Underlay Network"
   description: "Underlay Network for vagrant-lab"

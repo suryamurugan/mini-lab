@@ -1,3 +1,6 @@
 ---
 # FIXME: has to be pinned to next metal-stack version before next release
 metal_stack_release_version: develop
+
+metal_api_image_tag: pr-ipv6
+metal_metalctl_image_tag: 72-ipv6

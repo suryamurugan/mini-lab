@@ -92,6 +92,10 @@ machine: _privatenet
 firewall: _ips _privatenet
 	docker-compose run metalctl firewall create --description fw --name fw --hostname fw --project 00000000-0000-0000-0000-000000000000 --partition vagrant --image firewall-ubuntu-2.0 --size v1-small-x86 --networks internet-vagrant-lab,$(shell docker-compose run metalctl network list --name user-private-network -o template --template '{{ .id }}')
 
+.PHONY: firewall6
+firewall6: _ips _privatenet
+	docker-compose run metalctl firewall create --description fw6 --name fw6 --hostname fw6 --project 00000000-0000-0000-0000-000000000000 --partition vagrant --image firewall-ubuntu-2.0 --size v1-small-x86 --networks ipv6,$(shell docker-compose run metalctl network list --name user-private-network -o template --template '{{ .id }}')
+
 .PHONY: reinstall-machine01
 reinstall-machine01: env
 	docker-compose run metalctl machine reinstall --image ubuntu-20.04 e0ab02d2-27cd-5a5e-8efc-080ba80cf258
