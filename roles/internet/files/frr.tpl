@@ -65,6 +65,16 @@ router bgp {{ $ASN }}
   {{- end }}
  exit-address-family
  !
+ address-family ipv6 unicast
+  redistribute connected route-map LOOPBACKS
+  neighbor FIREWALL allowas-in 1
+  neighbor FIREWALL activate
+# TODO route map must be created properly, metal-core must do this
+#  {{- range $k, $f := .Ports.Firewalls }}
+#  neighbor {{ $f.Port }} route-map fw-{{ $k }}-in in
+#  {{- end }}
+ exit-address-family
+ !
  address-family l2vpn evpn
   advertise-all-vni
   neighbor FABRIC activate
@@ -116,10 +126,9 @@ router bgp {{ $ASN }} vrf {{ $vrf }}
   redistribute connected
   neighbor MACHINE maximum-prefix 24000
   neighbor MACHINE activate
-# TODO: ipv6 route-map actually does not allow any ipv6 traffic.
-#  {{- if gt (len $t.IPPrefixLists) 0 }}
-#  neighbor MACHINE route-map {{ $vrf }}-in in
-#  {{- end }}
+  {{- if gt (len $t.IPPrefixLists) 0 }}
+  neighbor MACHINE route-map {{ $vrf }}-in6 in
+  {{- end }}
  exit-address-family
  !
  address-family l2vpn evpn
@@ -151,6 +160,7 @@ router bgp {{ $ASN }} vrf vrfInternet
  !
  address-family l2vpn evpn
   advertise ipv4 unicast
+  advertise ipv6 unicast
  exit-address-family
 !
 vrf mgmt

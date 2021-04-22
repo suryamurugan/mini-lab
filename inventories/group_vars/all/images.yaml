@@ -4,3 +4,4 @@ metal_stack_release_version: develop
 
 metal_api_image_tag: pr-ipv6
 metal_metalctl_image_tag: 72-ipv6
+metal_core_image_tag: pr-ipv6
