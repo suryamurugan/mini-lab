@@ -6,5 +6,7 @@ metal_control_plane_stage_name: test
 metal_control_plane_namespace: metal-control-plane
 metal_control_plane_image_pull_policy: Always
 
+metal_hammer_image_url: https://images.metal-stack.io/metal-hammer/pull-requests/74-73-support-virtual-env/metal-hammer-initrd.img.lz4
+
 helm_additional_params:
   - '--debug'

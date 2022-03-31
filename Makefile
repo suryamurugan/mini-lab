@@ -88,12 +88,8 @@ route: _ips
 # TODO: discuss what to do instead?
 .PHONY: fwrules
 fwrules: _ips
-	eval "sudo -- iptables -I LIBVIRT_FWO -s 100.255.254.0/24 -i docker0 -j ACCEPT;"
-	eval "sudo -- iptables -I LIBVIRT_FWO -s 10.0.1.0/24 -i docker0 -j ACCEPT;"
-	eval "sudo -- iptables -I LIBVIRT_FWI -d 100.255.254.0/24 -o docker0 -j ACCEPT;"
-	eval "sudo -- iptables -I LIBVIRT_FWI -d 10.0.1.0/24 -o docker0 -j ACCEPT;"
-	eval "sudo -- iptables -t nat -I LIBVIRT_PRT -s 100.255.254.0/24 ! -d 100.255.254.0/24 -j MASQUERADE"
-	eval "sudo -- iptables -t nat -I LIBVIRT_PRT -s 10.0.1.0/24 ! -d 10.0.1.0/24 -j MASQUERADE"
+	eval "sudo -- iptables -t nat -I POSTROUTING -s 100.255.254.0/24 ! -d 100.255.254.0/24 -j MASQUERADE"
+	eval "sudo -- iptables -t nat -I POSTROUTING -s 10.0.1.0/24 ! -d 10.0.1.0/24 -j MASQUERADE"
 
 .PHONY: cleanup
 cleanup: cleanup-control-plane cleanup-partition
@@ -138,7 +134,8 @@ ssh-leaf02:
 
 .PHONY: start-machines
 start-machines:
-	docker exec vms /mini-lab/manage_vms.py --names $(LAB_MACHINES) create
+	docker exec vms1 /mini-lab/manage_vms.py --names machine01 create
+	docker exec vms2 /mini-lab/manage_vms.py --names machine02 create
 
 .PHONY: _reboot-machine
 _reboot-machine:

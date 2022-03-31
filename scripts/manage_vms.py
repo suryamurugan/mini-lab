@@ -22,7 +22,7 @@ VMS = {
         "disk-path": "/machine02.img",
         "disk-size": "5G",
         "memory": "2G",
-        "tap-index-fd": [(2, 50), (3, 60)],
+        "tap-index-fd": [(0, 50), (1, 60)],
         "serial-port": 4001,
     },
     "machine03": {
@@ -31,7 +31,7 @@ VMS = {
         "disk-path": "/machine03.img",
         "disk-size": "5G",
         "memory": "2G",
-        "tap-index-fd": [(4, 70), (5, 80)],
+        "tap-index-fd": [(0, 70), (1, 80)],
         "serial-port": 4002,
     },
 }
