@@ -46,7 +46,7 @@ metal_api_partitions:
     description: The mini-lab example partition
     bootconfig:
       kernelurl: "{{ metal_kernel_url }}"
-      imageurl: "{{ metal_hammer_image_url }}"
+      imageurl: "https://images.metal-stack.io/metal-hammer/pull-requests/74-73-support-virtual-env/metal-hammer-initrd.img.lz4"
       commandline: console=ttyS0,115200n8 ip=dhcp carrier_timeout=10
     privatenetworkprefixlength: 22
 
