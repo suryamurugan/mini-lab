@@ -1,0 +1,12 @@
+all:
+  children:
+    cvx:
+      hosts:
+        leaf01:
+          ansible_host: 172.17.0.3
+        leaf02:
+          ansible_host: 172.17.0.5
+    linux:
+      hosts:
+        vms:
+          ansible_host: 172.17.0.4
